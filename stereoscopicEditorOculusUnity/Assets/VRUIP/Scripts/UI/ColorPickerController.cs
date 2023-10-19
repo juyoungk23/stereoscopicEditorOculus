@@ -12,7 +12,7 @@ namespace VRUIP
     {
         [Header("Events")]
         public UnityEvent<Color> onColorChanged;
-        
+
         [Header("Components")]
         [SerializeField] private Image background;
         [SerializeField] private Image gradientImage;
@@ -24,7 +24,8 @@ namespace VRUIP
         [SerializeField] private Image sliderBackground;
         [SerializeField] private Image colorPickerCircle;
         [SerializeField] private TMP_InputField currentColorText;
-
+        public GameObject rightHandController; // Drag your Right Hand Controller GameObject here in the inspector
+        private Camera controllerCamera;
         private readonly int _width = 100; // Width of the texture
         private readonly int _height = 100; // Height of the texture
         private Color _currentColor; // Current color of the gradient
@@ -40,6 +41,14 @@ namespace VRUIP
         protected override void Start()
         {
             base.Start();
+            // Get the Camera component from the rightHandController GameObject
+            controllerCamera = rightHandController.GetComponentInChildren<Camera>();
+
+            if (controllerCamera == null)
+            {
+                Debug.LogError("Camera not found in rightHandController");
+            }
+
             SetupColorPicker();
         }
 
@@ -64,18 +73,18 @@ namespace VRUIP
             _gradientScreenWidth = gradientRect.width;
             GetCurrentColor();
         }
-        
+
         private void OnSliderValueChanged(float value)
         {
             // Update the current hue
-            _currentHue = (int) value;
+            _currentHue = (int)value;
 
             // Update the gradient
             SetGradient();
-            
+
             // Set slider handle color
             handleImage.color = Color.HSVToRGB(_currentHue / 360f, 1, 1);
-            
+
             // Update the current color
             GetCurrentColor();
         }
@@ -91,10 +100,10 @@ namespace VRUIP
             _currentColor = color;
             currentColorImage.color = color;
             Color.RGBToHSV(color, out var h, out var s, out var v);
-            _currentHue = (int) Mathf.Round(h * 360);
-            _currentSaturation = (int) Mathf.Round(s * 100);
-            _currentValue = (int) Mathf.Round(v * 100);
-            
+            _currentHue = (int)Mathf.Round(h * 360);
+            _currentSaturation = (int)Mathf.Round(s * 100);
+            _currentValue = (int)Mathf.Round(v * 100);
+
             // Update the slider
             hueSlider.SetValueWithoutNotify(_currentHue);
             // Update the gradient
@@ -154,12 +163,12 @@ namespace VRUIP
                 var pixelColor = Color.HSVToRGB(x / 360f, 1, 1);
                 gradientTexture.SetPixel(x, 0, pixelColor);
             }
-            
+
             gradientTexture.Apply();
             var gradientSprite = Sprite.Create(gradientTexture, new Rect(0f, 0f, 360, 1), new Vector2(0.5f, 0.5f));
             sliderBackground.sprite = gradientSprite;
         }
-        
+
         /// <summary>
         /// Get the current color based on the picker position.
         /// </summary>
@@ -168,8 +177,8 @@ namespace VRUIP
             var position = colorPickerCircle.transform.localPosition;
             var saturation = position.x / _gradientScreenWidth;
             var value = Mathf.Abs(position.y / _gradientScreenHeight);
-            _currentSaturation = (int) Mathf.Round(saturation * 100);
-            _currentValue = (int) Mathf.Round(value * 100);
+            _currentSaturation = (int)Mathf.Round(saturation * 100);
+            _currentValue = (int)Mathf.Round(value * 100);
             var color = Color.HSVToRGB(_currentHue / 360f, _currentSaturation / 100f, _currentValue / 100f);
             currentColorImage.color = color;
             _currentColor = color;
@@ -182,26 +191,29 @@ namespace VRUIP
         {
             if (eventData.pointerCurrentRaycast.gameObject == gradientImage.gameObject)
             {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                // RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, controllerCamera, out var localPoint);
                 colorPickerCircle.transform.localPosition = localPoint;
                 GetCurrentColor();
             }
         }
-        
+
         public void OnDrag(PointerEventData eventData)
         {
             if (eventData.pointerCurrentRaycast.gameObject == gradientImage.gameObject)
             {
                 // If user is dragging inside of gradient
                 if (!_isDragging) _isDragging = true;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                // RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, controllerCamera, out var localPoint);
                 colorPickerCircle.transform.localPosition = localPoint;
                 GetCurrentColor();
             }
             else if (_isDragging)
             {
                 // If user dragged outside of gradient but is still holding
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                // RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, controllerCamera, out var localPoint);
                 var adjustedPoint = new Vector2(Mathf.Clamp(localPoint.x, 0, _gradientScreenWidth), Mathf.Clamp(localPoint.y, 0, _gradientScreenHeight));
                 colorPickerCircle.transform.localPosition = adjustedPoint;
                 GetCurrentColor();
