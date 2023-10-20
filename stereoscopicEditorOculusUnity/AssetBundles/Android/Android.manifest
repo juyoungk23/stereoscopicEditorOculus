@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 3919969738
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: apple
+      Dependencies: {}
