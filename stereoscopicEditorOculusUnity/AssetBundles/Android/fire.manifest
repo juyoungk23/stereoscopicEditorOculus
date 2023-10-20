@@ -1,0 +1,42 @@
+ManifestFileVersion: 0
+CRC: 320682474
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1a9841aeee1148a9b68f1df862328302
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 50aee2089c16dab6931dc52fc84ce649
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 1a9841aeee1148a9b68f1df862328302
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: ab52d2f563d6a2547a95671c153ebbb3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5cdea428d48e2bb488d33d5f75c39bb9, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/fire.prefab
+Dependencies: []

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TinyGiantStudio.Text;
 using ColorUtility = UnityEngine.ColorUtility;
 
 namespace VRUIP
@@ -18,7 +19,7 @@ namespace VRUIP
         [SerializeField] private Image gradientImage;
         [SerializeField] private Image currentColorImage;
         [SerializeField] private Image currentColorOutline;
-        [SerializeField] private Slider hueSlider;
+        [SerializeField] private UnityEngine.UI.Slider hueSlider;
         [SerializeField] private Image handleImage;
         [SerializeField] private Image handleOutline;
         [SerializeField] private Image sliderBackground;
@@ -26,6 +27,8 @@ namespace VRUIP
         [SerializeField] private TMP_InputField currentColorText;
         public GameObject rightHandController; // Drag your Right Hand Controller GameObject here in the inspector
         private Camera controllerCamera;
+        private GameObject lastSelectedObject = null;  // Add this line to the class variables
+
         private readonly int _width = 100; // Width of the texture
         private readonly int _height = 100; // Height of the texture
         private Color _currentColor; // Current color of the gradient
@@ -52,6 +55,68 @@ namespace VRUIP
             SetupColorPicker();
         }
 
+        void Update()
+        {
+            GameObject selectedObject = SelectedObjectTracker.selectedObject;  // Use SelectedObjectTracker.selectedObject
+            bool hasSelectedObjectChanged = lastSelectedObject != selectedObject;
+            lastSelectedObject = selectedObject;
+            if (selectedObject != null && hasSelectedObjectChanged)
+            {
+                var textComponent = selectedObject.GetComponent<Modular3DText>();
+                if (textComponent != null)
+                {
+                    var colorChanger = selectedObject.GetComponent<ColorChanger>();
+                    if (colorChanger != null)
+                    {
+                        Color currentObjectColor = colorChanger.meshRenderer.material.color; // Get the current color from MeshRenderer
+
+                        // Only update color picker UI when a new object is selected and its color is different
+                        if (currentObjectColor != _currentColor)
+                        {
+                            SetInitialColor(currentObjectColor);
+                        }
+                    }
+                }
+            }
+            else if (selectedObject != null)
+            {
+                var colorChanger = selectedObject.GetComponent<ColorChanger>();
+                if (colorChanger != null)
+                {
+                    // Change color of the selected object based on the current color from color picker
+                    colorChanger.ChangeColor(_currentColor);
+                }
+            }
+        }
+
+        private void SetInitialColor(Color color)
+        {
+            // Update the internal current color
+            _currentColor = color;
+
+            // Update the color picker UI elements
+            currentColorImage.color = color;
+            Color.RGBToHSV(color, out var h, out var s, out var v);
+            _currentHue = (int)Mathf.Round(h * 360);
+            _currentSaturation = (int)Mathf.Round(s * 100);
+            _currentValue = (int)Mathf.Round(v * 100);
+
+            // Update the hue slider
+            hueSlider.SetValueWithoutNotify(_currentHue);
+
+            // Update the gradient background
+            SetGradient();
+
+            // Update the picker circle position
+            var position = new Vector2(_currentSaturation / 100f * _gradientScreenWidth, _currentValue / 100f * _gradientScreenHeight);
+            colorPickerCircle.transform.localPosition = position;
+
+            // Update the hex color text
+            var unformattedHex = color.ToHexString();
+            currentColorText.SetTextWithoutNotify("#" + unformattedHex[..6]);
+
+            onColorChanged.Invoke(_currentColor);
+        }
         protected override void SetColors(ColorTheme theme)
         {
             background.color = theme.primaryColor;
