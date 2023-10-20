@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981187378322",
+    "project_id": "stereoscopiceditor",
+    "storage_bucket": "stereoscopiceditor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981187378322:android:68cbdddabc962ee265fa4b",
+        "android_client_info": {
+          "package_name": "com.juyoungkim.StereocopicEditorOculus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6rQz8kh1hKMiMZNW6KDHTPqsx27UU5LI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
