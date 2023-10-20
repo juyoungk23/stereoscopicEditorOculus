@@ -81,10 +81,49 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 436b1b7641c3c4062bd8151155c6b770,
         type: 3}
       propertyPath: m_Name
-      value: food_apple_01_8k
+      value: apple
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 436b1b7641c3c4062bd8151155c6b770,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6630753852740700635}
   m_SourcePrefab: {fileID: 100100000, guid: 436b1b7641c3c4062bd8151155c6b770, type: 3}
+--- !u!1 &2679454995720735184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 436b1b7641c3c4062bd8151155c6b770,
+    type: 3}
+  m_PrefabInstance: {fileID: 3021422556954080385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6630753852740700635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679454995720735184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDistance: 100
+  Enabled: 1
+  OnPointerClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDownEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUpEvent:
+    m_PersistentCalls:
+      m_Calls: []

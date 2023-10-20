@@ -1,0 +1,42 @@
+ManifestFileVersion: 0
+CRC: 2648627967
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 84aa485273b55d07a8069f1da4be31d7
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 02802511d40284adaf844731ebef9938
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 84aa485273b55d07a8069f1da4be31d7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Assembly-CSharp
+  ClassName: BNG.PointerEventDataEvent
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+Assets:
+- Assets/sofa.prefab
+Dependencies: []

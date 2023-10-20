@@ -1,7 +1,16 @@
 ManifestFileVersion: 0
-CRC: 3919969738
+CRC: 4010911004
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: apple
+      Dependencies: {}
+    Info_1:
+      Name: text
+      Dependencies: {}
+    Info_2:
+      Name: camera
+      Dependencies: {}
+    Info_3:
+      Name: sofa
       Dependencies: {}
