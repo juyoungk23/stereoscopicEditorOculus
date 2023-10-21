@@ -182,6 +182,7 @@ public class SceneLoader : MonoBehaviour
                 if (meshRenderer != null && colorChanger != null)
                 {
                     // Link the existing MeshRenderer to the ColorChanger
+                    Debug.Log("Mesh Renderer and Color Changer Linked!");
                     colorChanger.SetMeshRenderer(meshRenderer);
                 }
                 else

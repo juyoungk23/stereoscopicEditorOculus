@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2027172929013655869}
   - component: {fileID: 2375911359567985225}
   - component: {fileID: 1105457120918795250}
+  - component: {fileID: 6432829567416367111}
   - component: {fileID: 1811384205336869385}
   - component: {fileID: -6031647830926370710}
   - component: {fileID: -435963901943929512}
@@ -99,7 +100,7 @@ MonoBehaviour:
   reApplyModulesToOldCharacters: 0
   singleInPrefab: 1
   combineMeshInEditor: 1
-  combineMeshDuringRuntime: 0
+  combineMeshDuringRuntime: 1
   hideLettersInHierarchyInPlayMode: 0
   hideLettersInHierarchyInEditMode: 0
   canBreakOutermostPrefab: 0
@@ -376,6 +377,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6432829567416367111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240452289700676418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71c71b2c5e27c3a46ba06dd5eb916c5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 1105457120918795250}
 --- !u!114 &1811384205336869385
 MonoBehaviour:
   m_ObjectHideFlags: 0
