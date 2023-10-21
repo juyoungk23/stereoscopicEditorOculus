@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 193015965
+CRC: 2217629816
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 29dce926c67c2e0e56171c740a77c2bd
+    Hash: 914b567e856b7089f5554a2c505a7cd0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1fc4ae5ce42e99792b5a216a9c3d7e7d
+    Hash: 2ed349e470ae6ee69fffa79c7141a4f2
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 29dce926c67c2e0e56171c740a77c2bd
+    Hash: 914b567e856b7089f5554a2c505a7cd0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -26,35 +26,23 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: ab52d2f563d6a2547a95671c153ebbb3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 5cdea428d48e2bb488d33d5f75c39bb9, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: a1b69eb3f1c55974bb1bcc1dbc547a11, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 45d100e06f4a0744c8728e86700b5472, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 4ac03f583a899fd43ba438d84cadfb45, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 6d022da6541fe6144a0948571cfad5a1, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
-- AssemblyName: Assembly-CSharp-firstpass
-  ClassName: TinyGiantStudio.Layout.LayoutElementModuleContainer
-- AssemblyName: Assembly-CSharp-firstpass
-  ClassName: TinyGiantStudio.Layout.Line
-- AssemblyName: Assembly-CSharp-firstpass
-  ClassName: TinyGiantStudio.Layout.MeshLayout
-- AssemblyName: Assembly-CSharp-firstpass
-  ClassName: TinyGiantStudio.Text.Character
 - AssemblyName: Assembly-CSharp
   ClassName: BNG.PointerEventDataEvent
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 Assets:
-- Assets/text.prefab
+- Assets/cube.prefab
 Dependencies: []
