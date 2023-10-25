@@ -9,33 +9,33 @@ using VRUIP;
 
 
 [System.Serializable]
-public class SceneData
+public class SceneData2
 {
     public string sceneName;
-    public List<ObjectData> objects;
+    public List<ObjectData2> objects;
 }
 
 [System.Serializable]
-public class ObjectData
+public class ObjectData2
 {
     public string id;
     public string assetBundleName;
     public string objectType;  // "Cube", "Sphere", "Gear", "Text", etc.
-    public Vector3Data position;
-    public Vector3Data rotation;
-    public Vector3Data scale;
+    public Vector3Data2 position;
+    public Vector3Data2 rotation;
+    public Vector3Data2 scale;
 }
 
 
 [System.Serializable]
-public class Vector3Data
+public class Vector3Data2
 {
     public float x;
     public float y;
     public float z;
 }
 
-public class SceneLoader : MonoBehaviour
+public class LoadObject : MonoBehaviour
 {
     private FirebaseStorage storage;
     private const string sceneJsonPath = "gs://stereoscopiceditor.appspot.com/YourScene.json";
@@ -46,10 +46,10 @@ public class SceneLoader : MonoBehaviour
     void Start()
     {
         storage = FirebaseStorage.DefaultInstance;
-        // LoadSceneData();
+        // LoadSceneData2();
     }
 
-    private void LoadSceneData()
+    private void LoadSceneData2()
     {
         // Get the storage reference for scene JSON
         StorageReference sceneJsonRef = storage.GetReferenceFromUrl(sceneJsonPath);
@@ -80,26 +80,26 @@ public class SceneLoader : MonoBehaviour
                 yield break;
             }
 
-            // Deserialize JSON to SceneData object
+            // Deserialize JSON to SceneData2 object
             string jsonContent = www.downloadHandler.text;
-            SceneData sceneData = JsonUtility.FromJson<SceneData>(jsonContent);
+            SceneData2 sceneData2 = JsonUtility.FromJson<SceneData2>(jsonContent);
 
 
             // Process the scene data
-            ProcessSceneData(sceneData);
+            ProcessSceneData2(sceneData2);
         }
     }
 
-    private void ProcessSceneData(SceneData sceneData)
+    private void ProcessSceneData2(SceneData2 sceneData2)
     {
-        foreach (ObjectData objectData in sceneData.objects)
+        foreach (ObjectData2 objectData2 in sceneData2.objects)
         {
-            string assetBundleUrl = assetBundleBasePath + objectData.assetBundleName; // Assuming URL based on assetBundleName
-            StartCoroutine(DownloadAndInstantiateObject(objectData, assetBundleUrl));
+            string assetBundleUrl = assetBundleBasePath + objectData2.assetBundleName; // Assuming URL based on assetBundleName
+            StartCoroutine(DownloadAndInstantiateObject(objectData2, assetBundleUrl));
         }
     }
 
-    public IEnumerator DownloadAndInstantiateObject(ObjectData objectData, string assetBundleUrl, string newTextContent = null)
+    public IEnumerator DownloadAndInstantiateObject(ObjectData2 objectData2, string assetBundleUrl, string newTextContent = null)
     {
         // Get the storage reference for AssetBundle
         StorageReference assetBundleRef = storage.GetReferenceFromUrl(assetBundleUrl);
@@ -116,12 +116,12 @@ public class SceneLoader : MonoBehaviour
             string downloadUrl = task.Result.ToString();
 
             // Download AssetBundle and instantiate
-            StartCoroutine(DownloadAssetBundleAndInstantiate(downloadUrl, objectData, newTextContent));
+            StartCoroutine(DownloadAssetBundleAndInstantiate(downloadUrl, objectData2, newTextContent));
         });
 
         yield return null;
     }
-    private IEnumerator DownloadAssetBundleAndInstantiate(string assetBundleUrl, ObjectData objectData, string newTextContent = null)
+    private IEnumerator DownloadAssetBundleAndInstantiate(string assetBundleUrl, ObjectData2 objectData2, string newTextContent = null)
     {
         AssetBundle bundle;
 
@@ -152,15 +152,15 @@ public class SceneLoader : MonoBehaviour
             yield break;
         }
 
-        GameObject prefab = bundle.LoadAsset<GameObject>(objectData.assetBundleName);
-        Vector3 position = new Vector3(objectData.position.x, objectData.position.y, objectData.position.z);
-        Quaternion rotation = Quaternion.Euler(objectData.rotation.x, objectData.rotation.y, objectData.rotation.z);
-        Vector3 scale = new Vector3(objectData.scale.x, objectData.scale.y, objectData.scale.z);
+        GameObject prefab = bundle.LoadAsset<GameObject>(objectData2.assetBundleName);
+        Vector3 position = new Vector3(objectData2.position.x, objectData2.position.y, objectData2.position.z);
+        Quaternion rotation = Quaternion.Euler(objectData2.rotation.x, objectData2.rotation.y, objectData2.rotation.z);
+        Vector3 scale = new Vector3(objectData2.scale.x, objectData2.scale.y, objectData2.scale.z);
 
         GameObject go = Instantiate(prefab, position, rotation);
         go.transform.localScale = scale;
 
-        if (objectData.objectType == "Text")
+        if (objectData2.objectType == "Text")
         {
             Modular3DText textComponent = go.GetComponent<Modular3DText>();
             if (textComponent != null)
