@@ -8,7 +8,7 @@ public class AddObjectButton : MonoBehaviour
     public SceneLoader sceneLoader;  // Reference to your SceneLoader script
     public Button addCubeButton;  // Reference to your UI Button for adding a cube
     public Button addSphereButton;  // Reference to your UI Button for adding a sphere
-    public Button addGearButton;  // Reference to your UI Button for adding a gear
+    public Button addAppleButton;  // Reference to your UI Button for adding a gear
     public Button addTextButton;
     public TMP_InputField inputField;
     // Object Data for Cube
@@ -34,11 +34,11 @@ public class AddObjectButton : MonoBehaviour
     };
 
     // Object Data for Gear
-    private ObjectData gearData = new ObjectData
+    private ObjectData appleData = new ObjectData
     {
-        id = "newGear",
-        assetBundleName = "gear",
-        objectType = "Text",
+        id = "newapple",
+        assetBundleName = "apple",
+        objectType = "apple",
         position = new Vector3Data { x = 4, y = 1, z = 0 },
         rotation = new Vector3Data { x = 0, y = 0, z = 0 },
         scale = new Vector3Data { x = 1, y = 1, z = 1 }
@@ -60,7 +60,7 @@ public class AddObjectButton : MonoBehaviour
         // Attach the OnClick behavior for each button
         addCubeButton.onClick.AddListener(OnAddCubeButtonClick);
         addSphereButton.onClick.AddListener(OnAddSphereButtonClick);
-        addGearButton.onClick.AddListener(OnAddGearButtonClick);
+        addAppleButton.onClick.AddListener(OnAddAppleButtonClick);
         addTextButton.onClick.AddListener(OnAddTextButtonClick);
     }
 
@@ -78,21 +78,26 @@ public class AddObjectButton : MonoBehaviour
         StartCoroutine(sceneLoader.DownloadAndInstantiateObject(sphereData, assetBundleUrl));
     }
 
-    public void OnAddGearButtonClick()
+    public void OnAddAppleButtonClick()
     {
-        Debug.Log("OnAddGearButtonClick called");
-        string assetBundleUrl = SceneLoader.assetBundleBasePath + gearData.assetBundleName;
-        StartCoroutine(sceneLoader.DownloadAndInstantiateObject(gearData, assetBundleUrl));
+        Debug.Log("OnAddAppleButtonClick called");
+        string assetBundleUrl = SceneLoader.assetBundleBasePath + appleData.assetBundleName;
+        StartCoroutine(sceneLoader.DownloadAndInstantiateObject(appleData, assetBundleUrl));
     }
 
     public void OnAddTextButtonClick()
     {
         string newTextContent = inputField.text;  // Get text from input field
 
+        // if (string.IsNullOrEmpty(newTextContent))
+        // {
+        //     Debug.LogWarning("Input field is empty. Not adding text object.");
+        //     return;
+        // }
+
         if (string.IsNullOrEmpty(newTextContent))
         {
-            Debug.LogWarning("Input field is empty. Not adding text object.");
-            return;
+            newTextContent = "Hello World!";
         }
 
         Debug.Log("OnAddTextButtonClick called");
