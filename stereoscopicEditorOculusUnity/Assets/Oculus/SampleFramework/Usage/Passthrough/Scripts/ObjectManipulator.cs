@@ -37,9 +37,13 @@ public class ObjectManipulator : MonoBehaviour
 
     // only used in this script for fading in from black
     public OVRPassthroughLayer passthrough;
+    SelectedObjectTracker selectedObjectTracker;
 
     private void Start()
     {
+        // Find the SelectedObjectTracker script in the scene
+        selectedObjectTracker = FindObjectOfType<SelectedObjectTracker>();
+
         if (passthrough)
         {
             passthrough.colorMapEditorBrightness = -1;
@@ -68,6 +72,14 @@ public class ObjectManipulator : MonoBehaviour
                 grabObject = hoverObject;
                 GrabHoverObject(grabObject, controllerPos, controllerRot);
             }
+
+            // Check if the trigger close to the index finger is pressed
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controller))
+            {
+                Debug.Log("Trigger Pressed!");
+                selectedObjectTracker.UpdateSelectedObject(hoverObject);
+            }
+
         }
 
         if (grabObject)
