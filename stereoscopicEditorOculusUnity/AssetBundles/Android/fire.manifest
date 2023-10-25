@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 320682474
+CRC: 2905957473
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1a9841aeee1148a9b68f1df862328302
+    Hash: 5277693875149b396952d63b464d1b4d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 50aee2089c16dab6931dc52fc84ce649
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 1a9841aeee1148a9b68f1df862328302
+    Hash: 5277693875149b396952d63b464d1b4d
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,5 +38,5 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/fire.prefab
+- Assets/MyPrefabs/fire.prefab
 Dependencies: []

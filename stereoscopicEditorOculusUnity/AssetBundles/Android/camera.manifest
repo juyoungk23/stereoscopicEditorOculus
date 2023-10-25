@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 4096941983
+CRC: 1278704545
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 04129300085c5823fa048560211edd14
+    Hash: e1a81e1b609a5520436c368431e959e1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 02802511d40284adaf844731ebef9938
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 04129300085c5823fa048560211edd14
+    Hash: e1a81e1b609a5520436c368431e959e1
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,5 +38,5 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 Assets:
-- Assets/camera.prefab
+- Assets/MyPrefabs/camera.prefab
 Dependencies: []

@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 2648627967
+CRC: 2771533198
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 84aa485273b55d07a8069f1da4be31d7
+    Hash: 11bcc29e7e87982886a57429dd343683
   TypeTreeHash:
     serializedVersion: 2
     Hash: 02802511d40284adaf844731ebef9938
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 84aa485273b55d07a8069f1da4be31d7
+    Hash: 11bcc29e7e87982886a57429dd343683
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,5 +38,5 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 Assets:
-- Assets/sofa.prefab
+- Assets/MyPrefabs/sofa.prefab
 Dependencies: []

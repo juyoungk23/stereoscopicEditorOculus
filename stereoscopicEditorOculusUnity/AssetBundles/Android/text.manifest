@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3942603345
+CRC: 1059128061
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4b3124d6e9c17afa7454b20c74a485cb
+    Hash: d6dd442ff84a318dfddb66e429567e89
   TypeTreeHash:
     serializedVersion: 2
-    Hash: cc15d7539d004d4cdd5f8b97dd134c7c
+    Hash: 3e7add1a47560be93c90d3b2f6c82e57
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 4b3124d6e9c17afa7454b20c74a485cb
+    Hash: d6dd442ff84a318dfddb66e429567e89
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -27,21 +27,21 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: ab52d2f563d6a2547a95671c153ebbb3, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 5cdea428d48e2bb488d33d5f75c39bb9, type: 3}
+  Script: {fileID: 11500000, guid: 6d022da6541fe6144a0948571cfad5a1, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 71c71b2c5e27c3a46ba06dd5eb916c5b, type: 3}
+  Script: {fileID: 11500000, guid: 4ac03f583a899fd43ba438d84cadfb45, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a1b69eb3f1c55974bb1bcc1dbc547a11, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 45d100e06f4a0744c8728e86700b5472, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 4ac03f583a899fd43ba438d84cadfb45, type: 3}
+  Script: {fileID: 11500000, guid: 5cdea428d48e2bb488d33d5f75c39bb9, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 6d022da6541fe6144a0948571cfad5a1, type: 3}
+  Script: {fileID: 11500000, guid: 71c71b2c5e27c3a46ba06dd5eb916c5b, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
@@ -58,5 +58,5 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 Assets:
-- Assets/text.prefab
+- Assets/MyPrefabs/text.prefab
 Dependencies: []

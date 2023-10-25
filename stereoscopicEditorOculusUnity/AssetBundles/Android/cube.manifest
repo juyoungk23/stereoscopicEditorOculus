@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 3495503747
+CRC: 361987826
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f7bc3309837234d562b1214377874d33
+    Hash: 1d9ba89167433d5b6601aba03b172139
   TypeTreeHash:
     serializedVersion: 2
-    Hash: cc343de06f364c12813110949d9aad4d
+    Hash: 4fa6f86a36564083233d0e621529880e
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: f7bc3309837234d562b1214377874d33
+    Hash: 1d9ba89167433d5b6601aba03b172139
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -29,11 +29,11 @@ ClassTypes:
 - Class: 65
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: ab52d2f563d6a2547a95671c153ebbb3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 5cdea428d48e2bb488d33d5f75c39bb9, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers:
@@ -42,5 +42,5 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.CoreModule
   ClassName: UnityEngine.Events.PersistentCallGroup
 Assets:
-- Assets/cube.prefab
+- Assets/MyPrefabs/cube.prefab
 Dependencies: []

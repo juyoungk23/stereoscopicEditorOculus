@@ -1,15 +1,15 @@
 ManifestFileVersion: 0
-CRC: 2611829860
+CRC: 3170015328
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9b09ee384ba2929b8953593fe903db42
+    Hash: afc872d7767b6c430088a171771a4d0a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9efe70ba6c00b6133c53aa07427fb22c
+    Hash: 5ef5e023b7b398634ce74bb7b72a15fa
   IncrementalBuildHash:
     serializedVersion: 2
-    Hash: 9b09ee384ba2929b8953593fe903db42
+    Hash: afc872d7767b6c430088a171771a4d0a
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -31,18 +31,10 @@ ClassTypes:
 - Class: 65
   Script: {instanceID: 0}
 - Class: 114
-  Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: ab52d2f563d6a2547a95671c153ebbb3, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 5cdea428d48e2bb488d33d5f75c39bb9, type: 3}
 - Class: 115
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers:
-- AssemblyName: Assembly-CSharp
-  ClassName: BNG.PointerEventDataEvent
-- AssemblyName: UnityEngine.CoreModule
-  ClassName: UnityEngine.Events.PersistentCallGroup
+SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/apple.prefab
+- Assets/MyPrefabs/apple.prefab
 Dependencies: []
