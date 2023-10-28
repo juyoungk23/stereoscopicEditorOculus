@@ -176,7 +176,8 @@ public class ObjectManipulator : MonoBehaviour
             {
                 hoverObject = hit.collider.gameObject;
                 closestObject = thisHitDistance;
-                rayDistance = grabObject ? thisHitDistance : thisHitDistance - 0.1f;
+                // rayDistance = grabObject ? thisHitDistance : thisHitDistance - 0.1f; // this line is causing the cursor to stop short when not grabbing
+                rayDistance = thisHitDistance;
                 labelPosition = hit.point;
             }
         }
