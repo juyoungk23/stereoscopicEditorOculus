@@ -8,12 +8,14 @@ using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 #endif
 
-namespace BNG {
+namespace BNG
+{
 
     /// <summary>
     /// Point a line  at our GazePointer
     /// </summary>
-    public class UIPointer : MonoBehaviour {
+    public class UIPointer : MonoBehaviour
+    {
 
         [Tooltip("The controller side this pointer is on")]
         public ControllerHand ControllerSide = ControllerHand.Right;
@@ -36,7 +38,7 @@ namespace BNG {
         [Tooltip("Minimum scale of the Cursor object if CursorScaling is enabled")]
         public float CursorMinScale = 0.6f;
         public float CursorMaxScale = 6.0f;
-        
+
         private Vector3 _cursorInitialLocalScale;
 
         /// <summary>
@@ -50,21 +52,24 @@ namespace BNG {
         /// </summary>
         VRUISystem uiSystem;
         PointerEvents selectedPointerEvents;
-        PointerEventData data;
+        public PointerEventData data;
 
         [Tooltip("LineRenderer to use when showing a valid UI Canvas. Leave null to attempt a GetComponent<> on this object.")]
         public LineRenderer lineRenderer;
 
-        void Awake() {
+        void Awake()
+        {
 
-            if(cursor) {
+            if (cursor)
+            {
                 _cursor = GameObject.Instantiate(cursor);
                 _cursor.transform.SetParent(transform);
                 _cursorInitialLocalScale = transform.localScale;
             }
 
             // If no Line Renderer was specified in the editor, check this Transform
-            if (lineRenderer == null) {
+            if (lineRenderer == null)
+            {
                 lineRenderer = GetComponent<LineRenderer>();
             }
 
@@ -127,7 +132,8 @@ public virtual void SetupXRITRaycaster() {
 }
 #endif
 
-        void OnEnable() {
+        void OnEnable()
+        {
 #if XRIT_INTEGRATION
             if (VRUISystem.Instance.UseXRInteractionToolkitUISystem) {
 
@@ -140,19 +146,23 @@ public virtual void SetupXRITRaycaster() {
 #endif
         }
 
-        void updateUITransforms() {
+        void updateUITransforms()
+        {
             // Automatically update VR System with our transforms
-            if (AutoUpdateUITransforms && ControllerSide == ControllerHand.Left) {
+            if (AutoUpdateUITransforms && ControllerSide == ControllerHand.Left)
+            {
                 uiSystem.LeftPointerTransform = this.transform;
             }
-            else if (AutoUpdateUITransforms && ControllerSide == ControllerHand.Right) {
+            else if (AutoUpdateUITransforms && ControllerSide == ControllerHand.Right)
+            {
                 uiSystem.RightPointerTransform = this.transform;
             }
 
             uiSystem.UpdateControllerHand(ControllerSide);
         }
 
-        public void Update() {
+        public void Update()
+        {
 #if XRIT_INTEGRATION
             if(VRUISystem.Instance.UseXRInteractionToolkitUISystem) {
                 // Update raycast line
@@ -181,11 +191,13 @@ public virtual void SetupXRITRaycaster() {
 #endif
         }
 
-        public virtual void UpdatePointer() {
+        public virtual void UpdatePointer()
+        {
             data = uiSystem.EventData;
 
             // Can bail early if not looking at anything
-            if (data == null || data.pointerCurrentRaycast.gameObject == null) {
+            if (data == null || data.pointerCurrentRaycast.gameObject == null)
+            {
 
                 HidePointer();
 
@@ -193,22 +205,26 @@ public virtual void SetupXRITRaycaster() {
             }
 
             // Set position of the cursor
-            if (_cursor != null) {
+            if (_cursor != null)
+            {
 
                 bool lookingAtUI = data.pointerCurrentRaycast.module.GetType() == typeof(GraphicRaycaster);
                 selectedPointerEvents = data.pointerCurrentRaycast.gameObject.GetComponent<PointerEvents>();
                 bool lookingAtPhysicalObject = selectedPointerEvents != null;
 
                 // Are we too far away from the Physics object now?
-                if (lookingAtPhysicalObject) {
-                    if (data.pointerCurrentRaycast.distance > selectedPointerEvents.MaxDistance) {
+                if (lookingAtPhysicalObject)
+                {
+                    if (data.pointerCurrentRaycast.distance > selectedPointerEvents.MaxDistance)
+                    {
                         HidePointer();
                         return;
                     }
                 }
 
                 // Can bail immediately if not looking at a UI object or an Object with PointerEvents on it
-                if (!lookingAtUI && !lookingAtPhysicalObject) {
+                if (!lookingAtUI && !lookingAtPhysicalObject)
+                {
                     HidePointer();
                     return;
                 }
@@ -226,7 +242,8 @@ public virtual void SetupXRITRaycaster() {
             }
 
             // Update linerenderer
-            if (lineRenderer) {
+            if (lineRenderer)
+            {
                 lineRenderer.useWorldSpace = false;
                 lineRenderer.SetPosition(0, Vector3.zero);
                 lineRenderer.SetPosition(1, new Vector3(0, 0, Vector3.Distance(transform.position, data.pointerCurrentRaycast.worldPosition) * LineDistanceModifier));
@@ -234,20 +251,25 @@ public virtual void SetupXRITRaycaster() {
             }
         }
 
-        public virtual void HidePointer() {
+        public virtual void HidePointer()
+        {
             // Hide the line and cursor
-            if(HidePointerIfNoObjectsFound) {
+            if (HidePointerIfNoObjectsFound)
+            {
                 _cursor.SetActive(false);
                 lineRenderer.enabled = false;
             }
             // Show a fixed length line
-            else {
-                if (_cursor) {
+            else
+            {
+                if (_cursor)
+                {
                     _cursor.SetActive(false);
                 }
 
                 // Set length to fixed amount
-                if (lineRenderer) {
+                if (lineRenderer)
+                {
                     lineRenderer.useWorldSpace = false;
                     lineRenderer.SetPosition(0, Vector3.zero);
                     lineRenderer.SetPosition(1, new Vector3(0, 0, FixedPointerLength * LineDistanceModifier));

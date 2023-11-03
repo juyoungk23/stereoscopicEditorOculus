@@ -25,7 +25,6 @@ namespace VRUIP
         [SerializeField] private Image sliderBackground;
         [SerializeField] private Image colorPickerCircle;
         [SerializeField] private TMP_InputField currentColorText;
-        public GameObject rightHandController; // Drag your Right Hand Controller GameObject here in the inspector
         private Camera controllerCamera;
         private GameObject lastSelectedObject = null;  // Add this line to the class variables
 
@@ -40,6 +39,7 @@ namespace VRUIP
         private float _gradientScreenHeight;
 
         public Color CurrentColor => _currentColor;
+        public GameObject rightHandController; // Drag your Right Hand Controller GameObject here in the inspector
 
         protected override void Start()
         {
@@ -269,16 +269,16 @@ namespace VRUIP
             {
                 // If user is dragging inside of gradient
                 if (!_isDragging) _isDragging = true;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
-                // RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, controllerCamera, out var localPoint);
+                // RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, controllerCamera, out var localPoint);
                 colorPickerCircle.transform.localPosition = localPoint;
                 GetCurrentColor();
             }
             else if (_isDragging)
             {
                 // If user dragged outside of gradient but is still holding
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
-                // RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, controllerCamera, out var localPoint);
+                // RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, Camera, out var localPoint);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(gradientImage.rectTransform, eventData.position, controllerCamera, out var localPoint);
                 var adjustedPoint = new Vector2(Mathf.Clamp(localPoint.x, 0, _gradientScreenWidth), Mathf.Clamp(localPoint.y, 0, _gradientScreenHeight));
                 colorPickerCircle.transform.localPosition = adjustedPoint;
                 GetCurrentColor();
