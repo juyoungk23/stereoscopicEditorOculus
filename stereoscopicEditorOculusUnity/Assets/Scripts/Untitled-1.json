@@ -1,13 +1,44 @@
 {
-    "items": [
-      {"name": "Item1", "description": "Description for Item1"},
-      {"name": "Item2", "description": "Description for Item2"},
-      {"name": "Item3", "description": "Description for Item3"},
-      {"name": "Item4", "description": "Description for Item4"},
-      {"name": "Item5", "description": "Description for Item5"},
-      {"name": "Item6", "description": "Description for Item6"},
-      {"name": "Item7", "description": "Description for Item7"},
-      {"name": "Item8", "description": "Description for Item8"}
-    ]
-  }
-  
+  "items": [
+    {
+      "name": "Sunny Field",
+      "description": "A beautiful sunny field captured during golden hour.",
+      "imageUrl": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b"
+    },
+    {
+      "name": "Mountain",
+      "description": "Snowy mountain under the clear blue sky.",
+      "imageUrl": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b"
+    },
+    {
+      "name": "Forest Path",
+      "description": "A serene path through an autumn forest.",
+      "imageUrl": "https://images.unsplash.com/photo-1561484930-998b6a7b22e8"
+    },
+    {
+      "name": "City Skyline",
+      "description": "The city skyline at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c"
+    },
+    {
+      "name": "Desert",
+      "description": "The vastness of the desert and its sand dunes.",
+      "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d14bab8c"
+    },
+    {
+      "name": "Ocean",
+      "description": "Waves crashing on a rocky shore.",
+      "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+    },
+    {
+      "name": "Lighthouse",
+      "description": "A lighthouse stands guard on a cliff.",
+      "imageUrl": "https://images.unsplash.com/photo-1549880338-65ddcdfd017b"
+    },
+    {
+      "name": "Rainforest",
+      "description": "The lush greenery of a tropical rainforest.",
+      "imageUrl": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6"
+    }
+  ]
+}

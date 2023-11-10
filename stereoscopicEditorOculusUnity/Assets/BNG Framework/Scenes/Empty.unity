@@ -2648,8 +2648,6 @@ MonoBehaviour:
   inputAxis: 03000000
   RotateAction: {fileID: -6493913391331992944, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
-  DollyAction: {fileID: 3512515067727415170, guid: e39f4b35a6db18348b41eb0262520e69,
-    type: 3}
   RotationType: 1
   SnapRotationAmount: 45
   SnapInputAmount: 0.75
@@ -4828,7 +4826,7 @@ RectTransform:
   m_Father: {fileID: 1120134420}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6432,7 +6430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openTime: 5
-  GUIID: 36284
+  GUIID: 766026
 --- !u!4 &241527656
 Transform:
   m_ObjectHideFlags: 0
@@ -6478,7 +6476,6 @@ MonoBehaviour:
   inputAxis: 03000000
   RotateAction: {fileID: -6493913391331992944, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
-  DollyAction: {fileID: 0}
   RotationType: 1
   SnapRotationAmount: 45
   SnapInputAmount: 0.75
@@ -9001,7 +8998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openTime: 5
-  GUIID: 36368
+  GUIID: 766342
 --- !u!4 &289286051
 Transform:
   m_ObjectHideFlags: 0
@@ -9047,7 +9044,6 @@ MonoBehaviour:
   inputAxis: 03000000
   RotateAction: {fileID: -6493913391331992944, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
-  DollyAction: {fileID: 0}
   RotationType: 1
   SnapRotationAmount: 45
   SnapInputAmount: 0.75
@@ -14267,7 +14263,7 @@ RectTransform:
   m_Father: {fileID: 609843562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15826,7 +15822,7 @@ RectTransform:
   m_Father: {fileID: 1536940906}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16376,7 +16372,7 @@ RectTransform:
   m_Father: {fileID: 1040302891}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21714,7 +21710,7 @@ RectTransform:
   m_Father: {fileID: 508569176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -44397,7 +44393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1860367086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44496,7 +44492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1.23, y: 0}
   m_SizeDelta: {x: 1216, y: 333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860367091
@@ -48956,7 +48952,6 @@ MonoBehaviour:
   AllowInput: 1
   inputAxis: 03000000
   RotateAction: {fileID: 0}
-  DollyAction: {fileID: 0}
   RotationType: 0
   SnapRotationAmount: 45
   SnapInputAmount: 0.75
@@ -50050,7 +50045,6 @@ MonoBehaviour:
   inputAxis: 03000000
   RotateAction: {fileID: -6493913391331992944, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
-  DollyAction: {fileID: 0}
   RotationType: 1
   SnapRotationAmount: 45
   SnapInputAmount: 0.75
@@ -50277,7 +50271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 215.92264}
+  m_AnchoredPosition: {x: 0, y: 216.49976}
   m_SizeDelta: {x: 0, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &128969417017255492
@@ -68650,8 +68644,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3236242313526839275}
   m_HandleRect: {fileID: 6212830501716210037}
   m_Direction: 2
-  m_Value: 1.0010183
-  m_Size: 0.42487833
+  m_Value: 1.0000006
+  m_Size: 0.43006018
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -72100,8 +72094,8 @@ MonoBehaviour:
   closeButton: {fileID: 7324324117647890780}
   jsonFile: {fileID: 4900000, guid: 2681d638d81844f9fb1c4e8ccf7208f5, type: 3}
   scrollViewWidth: 1200
-  imageHeight: 200
-  contentPadding: 100
+  imageHeight: 240
+  contentPadding: 500
 --- !u!114 &7331743006412016222
 MonoBehaviour:
   m_ObjectHideFlags: 0

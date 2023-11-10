@@ -1,16 +1,19 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
-using TMPro;  // Make sure to add this for TextMeshPro
+using TMPro;
+
 
 public class DynamicScrollView : MonoBehaviour
 {
     public GameObject contentPanel;
     public GameObject imagePrefab;
-    public GameObject contentDetails;  // The GameObject that holds the content details UI
-    public TextMeshProUGUI descriptionText;  // TextMeshProUGUI for description
-    public TextMeshProUGUI nameText;  // Text for name
-    public Button closeButton;  // Button to close the details
+    public GameObject contentDetails;
+    public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI nameText;
+    public Button closeButton;
     public TextAsset jsonFile;
     public float scrollViewWidth = 1200f;
     public float imageHeight = 200f;
@@ -21,6 +24,7 @@ public class DynamicScrollView : MonoBehaviour
     {
         public string name;
         public string description;
+        public string imageUrl; // Add this field for image URLs
     }
 
     [Serializable]
@@ -40,7 +44,7 @@ public class DynamicScrollView : MonoBehaviour
         float spacing = imageHeight / 5;
 
         RectTransform contentRect = contentPanel.GetComponent<RectTransform>();
-        contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, rows * (imageHeight + spacing) + contentPadding);
+        // contentRect.sizeDelta = new Vector2(contentRect.sizeDelta.x, rows * (imageHeight + spacing) + contentPadding);
 
         int index = 0;
         for (int r = 0; r < rows; r++)
@@ -54,9 +58,11 @@ public class DynamicScrollView : MonoBehaviour
 
                 float x = (c - columns / 2.0f + 0.5f) * (imageHeight + spacing);
                 float y = -(r * (imageHeight + spacing) + imageHeight / 2);
-                // float y = -(r * (imageHeight + spacing) + imageHeight);
 
                 imageRect.anchoredPosition = new Vector2(x, y);
+
+                // Start coroutine to load image from URL
+                StartCoroutine(SetImageFromUrl(imageObject, items[index].imageUrl));
 
                 Button button = imageObject.GetComponent<Button>();
                 int itemIndex = index;
@@ -66,17 +72,31 @@ public class DynamicScrollView : MonoBehaviour
             }
         }
 
-        // Add a listener to the close button to disable the contentDetails GameObject
         closeButton.onClick.AddListener(() => contentDetails.SetActive(false));
+    }
+
+    private IEnumerator SetImageFromUrl(GameObject imageObject, string imageUrl)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl);
+        yield return request.SendWebRequest();
+
+        if (request.result == UnityWebRequest.Result.Success)
+        {
+            Texture2D texture = DownloadHandlerTexture.GetContent(request);
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            Image imageComponent = imageObject.GetComponent<Image>();
+            imageComponent.sprite = sprite;
+        }
+        else
+        {
+            Debug.LogError("Error downloading image: " + request.error);
+        }
     }
 
     void ShowDetails(ItemData item)
     {
-        // Set the details
         descriptionText.text = item.description;
         nameText.text = item.name;
-
-        // Enable the content details GameObject
         contentDetails.SetActive(true);
     }
 }

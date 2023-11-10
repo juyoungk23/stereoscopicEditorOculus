@@ -12,7 +12,6 @@ public class ObjectRotator : MonoBehaviour
     public bool AllowInput = true;
     public List<InputAxis> inputAxis = new List<InputAxis>() { InputAxis.RightThumbStickAxis };
     public InputActionReference RotateAction;
-    public InputActionReference DollyAction; // New Input Action for dollying the object
 
     [Header("Smooth / Snap Turning")]
     public RotationMechanic RotationType = RotationMechanic.Snap;
@@ -30,7 +29,7 @@ public class ObjectRotator : MonoBehaviour
 
     private float rotationAmount = 0;
     private float xAxis;
-    private float yAxis; // New variable for the y-axis input
+    private float yAxis; // Variable for the y-axis input for dollying
     private float previousXInput;
 
     public UIPointer uiPointer;  // Reference to the UIPointer script
@@ -64,8 +63,10 @@ public class ObjectRotator : MonoBehaviour
             return;
         }
 
-        xAxis = GetAxisInput();
-        yAxis = GetDollyInput(); // Get the y-axis input for dollying
+        // Read the value from the RotateAction input for both rotation and dollying
+        Vector2 inputVector = RotateAction.action.ReadValue<Vector2>();
+        xAxis = inputVector.x;
+        yAxis = inputVector.y;
 
         if (uiPointer.data != null)
         {
@@ -90,102 +91,37 @@ public class ObjectRotator : MonoBehaviour
         previousXInput = xAxis;
     }
 
-    // Method to get the y-axis value for dollying from the DollyAction
-    public float GetDollyInput()
-    {
-        if (DollyAction != null)
-        {
-            return DollyAction.action.ReadValue<Vector2>().y;
-        }
-
-        return 0f;
-    }
-    public virtual float GetAxisInput()
-    {
-        float lastVal = 0;
-
-        if (inputAxis != null)
-        {
-            for (int i = 0; i < inputAxis.Count; i++)
-            {
-                float axisVal = InputBridge.Instance.GetInputAxisValue(inputAxis[i]).x;
-                if (lastVal == 0)
-                {
-                    lastVal = axisVal;
-                }
-                else if (axisVal != 0 && axisVal > lastVal)
-                {
-                    lastVal = axisVal;
-                }
-            }
-        }
-
-        if (RotateAction != null)
-        {
-            float axisVal = RotateAction.action.ReadValue<Vector2>().x;
-            if (lastVal == 0)
-            {
-                lastVal = axisVal;
-            }
-            else if (axisVal != 0 && axisVal > lastVal)
-            {
-                lastVal = axisVal;
-            }
-        }
-
-        return lastVal;
-    }
-
     public virtual void DoSnapRotation(float xInput)
     {
         rotationAmount = 0;
 
-        if (xInput >= 0.1f && previousXInput < 0.1f)
+        if (xInput >= SnapInputAmount && previousXInput < SnapInputAmount)
         {
             rotationAmount += SnapRotationAmount;
         }
-        else if (xInput <= -0.1f && previousXInput > -0.1f)
+        else if (xInput <= -SnapInputAmount && previousXInput > -SnapInputAmount)
         {
             rotationAmount -= SnapRotationAmount;
         }
 
         if (Math.Abs(rotationAmount) > 0)
         {
-            currentTargetObject.transform.rotation = Quaternion.Euler(
-                new Vector3(
-                    currentTargetObject.transform.eulerAngles.x,
-                    currentTargetObject.transform.eulerAngles.y + rotationAmount,
-                    currentTargetObject.transform.eulerAngles.z));
+            currentTargetObject.transform.Rotate(0, rotationAmount, 0, Space.World);
         }
     }
 
     public virtual void DoSmoothRotation(float xInput)
     {
-        rotationAmount = 0;
-
-        if (xInput >= SmoothTurnMinInput)
-        {
-            rotationAmount += xInput * SmoothTurnSpeed * Time.deltaTime;
-        }
-        else if (xInput <= -SmoothTurnMinInput)
-        {
-            rotationAmount += xInput * SmoothTurnSpeed * Time.deltaTime;
-        }
-
-        currentTargetObject.transform.rotation = Quaternion.Euler(
-            new Vector3(
-                currentTargetObject.transform.eulerAngles.x,
-                currentTargetObject.transform.eulerAngles.y + rotationAmount,
-                currentTargetObject.transform.eulerAngles.z));
+        rotationAmount = xInput * SmoothTurnSpeed * Time.deltaTime;
+        currentTargetObject.transform.Rotate(0, rotationAmount, 0, Space.World);
     }
 
-    // New method to handle dolly movement
+    // Method to handle dolly movement
     public void DoDolly(float yInput)
     {
-        if (Math.Abs(yInput) > SmoothTurnMinInput)
+        if (Mathf.Abs(yInput) > SmoothTurnMinInput)
         {
-            Vector3 dollyDirection = currentTargetObject.transform.forward * yInput * DollySpeed * Time.deltaTime;
-            currentTargetObject.transform.position += dollyDirection;
+            currentTargetObject.transform.Translate(0, 0, yInput * DollySpeed * Time.deltaTime, Space.Self);
         }
     }
 }
